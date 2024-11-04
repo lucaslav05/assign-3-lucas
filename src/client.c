@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <netinet/in.h>
 
 #define PORT 8080
 #define BUFFER_LEN 256
@@ -50,7 +51,7 @@ int main(const int argc, char *argv[])
     }
 
     // Create client socket
-    clientSocket = socket(AF_INET, SOCK_STREAM, 0);
+    clientSocket = socket(AF_INET, SOCK_STREAM, 0); //NOLINT(android-cloexec-socket)
     if(clientSocket < 0)
     {
         perror("Error creating socket");

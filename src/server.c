@@ -29,7 +29,7 @@ int main(void)
     signal(SIGINT, handleExit);
 
     // Create server socket
-    serverSocket = socket(AF_INET, SOCK_STREAM, 0);
+    serverSocket = socket(AF_INET, SOCK_STREAM, 0); //NOLINT(android-cloexec-socket)
     if(serverSocket == -1)
     {
         perror("Error creating socket");
